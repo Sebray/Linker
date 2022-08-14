@@ -3,11 +3,11 @@ package com.dsr.linker.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.Date;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Data
@@ -21,7 +21,7 @@ public class Account {
     @Column(nullable = false, unique = true,length = 40)
     private String email;
 
-    @Column(nullable = false, length = 40)
+    @Column(nullable = false)
     private String password;
 
     @OneToOne
