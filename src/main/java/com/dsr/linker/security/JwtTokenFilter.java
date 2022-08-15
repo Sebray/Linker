@@ -25,18 +25,9 @@ public class JwtTokenFilter extends GenericFilterBean {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain filterChain)
             throws IOException, ServletException {
-        HttpServletResponse response = (HttpServletResponse) res;
         String token = jwtTokenProvider.resolveToken((HttpServletRequest) req);
-        boolean isValid = false;
 
-        try {
-            isValid = jwtTokenProvider.validateToken(token);
-        }
-        catch (JwtAuthenticationException | IllegalArgumentException e){
-            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Invalid token");
-        }
-
-        if (token != null && isValid) {
+        if (token != null && jwtTokenProvider.validateToken(token)) {
             Authentication auth = jwtTokenProvider.getAuthentication(token);
 
             if (auth != null) {

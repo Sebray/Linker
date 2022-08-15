@@ -81,7 +81,7 @@ public class JwtTokenProvider {
         return null;
     }
 
-    public boolean validateToken(String token) throws JwtAuthenticationException{
+    public boolean validateToken(String token){
         try {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
 

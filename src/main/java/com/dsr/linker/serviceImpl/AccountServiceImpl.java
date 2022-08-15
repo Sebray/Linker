@@ -1,7 +1,9 @@
 package com.dsr.linker.serviceImpl;
 
+import com.dsr.linker.dto.AccountDto;
 import com.dsr.linker.dto.AuthenticationRequestDto;
 import com.dsr.linker.entity.Account;
+import com.dsr.linker.mapper.AccountMapper;
 import com.dsr.linker.repository.AccountRepository;
 import com.dsr.linker.security.JwtUser;
 import com.dsr.linker.security.JwtUserFactory;
@@ -25,6 +27,7 @@ import static java.lang.String.format;
 public class AccountServiceImpl implements AccountService, UserDetailsService{
     private final AccountRepository accountRepository;
     private final PasswordEncoder passwordEncoder;
+    private final AccountMapper accountMapper;
 
     @Override
     public Account saveAccount(AuthenticationRequestDto account) {
@@ -40,8 +43,8 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
     }
 
     @Override
-    public List<Account> getAccounts() {
-        return accountRepository.findAll();
+    public List<AccountDto> getAccounts() {
+        return  accountMapper.toAccountDto(accountRepository.findAll());
     }
 
     @Override
