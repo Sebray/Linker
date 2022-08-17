@@ -17,12 +17,11 @@ public final class JwtUserFactory {
     public static JwtUser create(Account account) {
         List<Role> roles = new ArrayList<>();
         roles.add(account.getRole());
-
         return new JwtUser(
                 account.getId(),
                 account.getPassword(),
                 account.getEmail(),
-                true,
+                account.getStatus().getName().equals("Активирован"),
                 mapToGrantedAuthorities(roles)
         );
     }

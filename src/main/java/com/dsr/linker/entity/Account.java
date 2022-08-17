@@ -45,6 +45,8 @@ public class Account {
 
     private String description;
 
+    private String activationCode;
+
     @OneToOne
     @JoinColumn(name = "account_status_id", nullable = false)
     private AccountStatus status;

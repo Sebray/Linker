@@ -26,24 +26,17 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthenticationController {
     private final AuthenticationManager authenticationManager;
-
     private final JwtTokenProvider jwtTokenProvider;
-
-    private final AccountService userService;
+    private final AccountService accountService;
 
     @PostMapping("login")
     public ResponseEntity login(@RequestBody AuthenticationRequestDto requestDto) {
         try {
             String email = requestDto.getEmail();
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, requestDto.getPassword()));
-            Account user = userService.getAccount(email);
 
-            if (user == null) {
-                throw new UsernameNotFoundException("User with email: " + email + " not found");
-            }
-            List<Role> roles = new ArrayList<>();
-            roles.add(user.getRole());
-            String token = jwtTokenProvider.createToken(email, roles);
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(email, requestDto.getPassword()));
+
+            String token = jwtTokenProvider.createToken(email, accountService.getRolesByEmailForToken(email));
 
             Map<Object, Object> response = new HashMap<>();
             response.put("email", email);

@@ -18,9 +18,6 @@ public class AccountDto {
     @JsonProperty(value = "email")
     private String email;
 
-    @JsonProperty(value = "password")
-    private String password;
-
     @JsonProperty(value = "firstName")
     private String firstName;
 
