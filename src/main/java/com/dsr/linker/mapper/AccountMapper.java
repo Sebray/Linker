@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 public class AccountMapper {
     public AccountDto toAccountDto(Account account){
         boolean existCity = account.getCity() != null;
-        return new AccountDto(account.getId(), account.getEmail(),
+        return new AccountDto(account.getId(), account.getEmail(), account.getPassword(),
                 account.getFirstName(), account.getLastName(), account.getBirthday(),
                 (existCity ? account.getCity().getId() : null),
                 account.getDescription());
