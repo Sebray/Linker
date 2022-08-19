@@ -1,6 +1,9 @@
 package com.dsr.linker.mapper;
 
 import com.dsr.linker.dto.AccountDto;
+import com.dsr.linker.dto.AccountForUserDto;
+import com.dsr.linker.dto.AccountItemDto;
+import com.dsr.linker.dto.CityDto;
 import com.dsr.linker.entity.Account;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +18,22 @@ public class AccountMapper {
                 account.getFirstName(), account.getLastName(), account.getBirthday(),
                 (existCity ? account.getCity().getId() : null),
                 account.getDescription());
+    }
+
+    public AccountForUserDto toAccountForUserDto(Account account){
+        boolean existCity = account.getCity() != null;
+        return new AccountForUserDto(account.getId(),
+                account.getFirstName(), account.getLastName(), account.getBirthday(),
+                (existCity ? account.getCity().getId() : null),
+                account.getDescription());
+    }
+
+    public AccountItemDto toAccountItemDto(Account account){
+        boolean existCity = account.getCity() != null;
+        return new AccountItemDto(account.getId(),
+                account.getFirstName(), account.getLastName(), account.getBirthday(),
+                (existCity ? new CityDto(account.getCity().getId(),
+                        account.getCity().getName(), null) : null));
     }
 
     public List<AccountDto> toAccountDto(List<Account> accounts) {
