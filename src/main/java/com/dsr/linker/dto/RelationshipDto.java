@@ -14,10 +14,10 @@ public class RelationshipDto {
     private Long firstAccId;
 
     @JsonProperty(value = "secondAccId")
-    private Account secondAccId;
+    private Long secondAccId;
 
-    @JsonProperty(value = "statusId")
-    private Long statusId;
+    @JsonProperty(value = "status")
+    private RelationshipStatusDto status;
 
     @JsonProperty(value = "sender")
     private Byte sender = 0; //-1 – первый пользователь, 1 – второй
