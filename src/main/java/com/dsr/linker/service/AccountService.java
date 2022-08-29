@@ -1,7 +1,10 @@
 package com.dsr.linker.service;
 
 import com.dsr.linker.dto.*;
-import com.dsr.linker.entity.Account;
+import com.dsr.linker.dto.account.AccountDto;
+import com.dsr.linker.dto.account.AccountForSearchDto;
+import com.dsr.linker.dto.account.AccountForUserDto;
+import com.dsr.linker.dto.account.AccountItemDto;
 import com.dsr.linker.entity.Role;
 import org.springframework.data.domain.Page;
 
@@ -14,4 +17,5 @@ public interface AccountService {
     AccountForUserDto getAccount(Long id);
     Page<AccountItemDto> getAccounts(AccountForSearchDto accountDto, PageDto pageDto);
     List<Role> getRolesByEmailForToken(String email);
+    Long getIdByEmail(String email);
 }

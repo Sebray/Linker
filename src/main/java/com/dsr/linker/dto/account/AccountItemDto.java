@@ -1,14 +1,18 @@
-package com.dsr.linker.dto;
+package com.dsr.linker.dto.account;
 
+import com.dsr.linker.dto.CityDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountForSearchDto {
+public class AccountItemDto {
     @JsonProperty(value = "id")
     private Long id;
 
@@ -18,8 +22,9 @@ public class AccountForSearchDto {
     @JsonProperty(value = "lastName")
     private String lastName;
 
-    @JsonProperty(value = "age")
-    private Integer age;
+    @JsonProperty(value = "birthday")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date birthday;
 
     @JsonProperty(value = "city")
     private CityDto city;

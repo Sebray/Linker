@@ -1,6 +1,6 @@
 package com.dsr.linker.serviceImpl;
 
-import com.dsr.linker.dto.AccountItemDto;
+import com.dsr.linker.dto.account.AccountItemDto;
 import com.dsr.linker.dto.PageDto;
 import com.dsr.linker.dto.RelationshipDto;
 import com.dsr.linker.entity.Account;
@@ -15,7 +15,6 @@ import com.dsr.linker.repository.AccountRepository;
 import com.dsr.linker.repository.RelationshipRepository;
 import com.dsr.linker.repository.RelationshipStatusRepository;
 import com.dsr.linker.service.RelationshipService;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;

@@ -1,5 +1,6 @@
-package com.dsr.linker.dto;
+package com.dsr.linker.dto.account;
 
+import com.dsr.linker.dto.CityDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,15 +12,9 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountDto {
+public class AccountForUserDto {
     @JsonProperty(value = "id")
     private Long id;
-
-    @JsonProperty(value = "email")
-    private String email;
-
-    @JsonProperty(value = "password")
-    private String password;
 
     @JsonProperty(value = "firstName")
     private String firstName;
@@ -31,8 +26,8 @@ public class AccountDto {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthday;
 
-    @JsonProperty(value = "cityId")
-    private Long cityId;
+    @JsonProperty(value = "city")
+    private CityDto city;
 
     @JsonProperty(value = "description")
     private String description;

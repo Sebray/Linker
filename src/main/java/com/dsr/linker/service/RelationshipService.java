@@ -1,6 +1,6 @@
 package com.dsr.linker.service;
 
-import com.dsr.linker.dto.AccountItemDto;
+import com.dsr.linker.dto.account.AccountItemDto;
 import com.dsr.linker.dto.PageDto;
 import com.dsr.linker.dto.RelationshipDto;
 import org.springframework.data.domain.Page;

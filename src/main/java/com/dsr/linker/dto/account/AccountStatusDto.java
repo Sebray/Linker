@@ -1,4 +1,4 @@
-package com.dsr.linker.dto;
+package com.dsr.linker.dto.account;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

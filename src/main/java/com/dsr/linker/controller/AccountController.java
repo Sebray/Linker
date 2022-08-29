@@ -1,6 +1,10 @@
 package com.dsr.linker.controller;
 
 import com.dsr.linker.dto.*;
+import com.dsr.linker.dto.account.AccountDto;
+import com.dsr.linker.dto.account.AccountForSearchDto;
+import com.dsr.linker.dto.account.AccountForUserDto;
+import com.dsr.linker.dto.account.AccountItemDto;
 import com.dsr.linker.exception.ResourceNotAllowedException;
 import com.dsr.linker.security.JwtUser;
 import com.dsr.linker.service.AccountService;
@@ -38,9 +42,7 @@ public class AccountController {
     @PutMapping("/account")
     public ResponseEntity<AccountDto> updateAccount(@RequestBody AccountDto account) {
         JwtUser user = (JwtUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-
-        if(!user.getEmail().equals(account.getEmail()))
-            throw new ResourceNotAllowedException("You are not owner");
+        account.setId(user.getId());
 
         return new ResponseEntity<>(accountService.updateAccount(account), HttpStatus.OK);
     }

@@ -1,12 +1,10 @@
 package com.dsr.linker.controller;
 
-import com.dsr.linker.dto.AccountForSearchDto;
-import com.dsr.linker.dto.AccountItemDto;
+import com.dsr.linker.dto.account.AccountItemDto;
 import com.dsr.linker.dto.PageDto;
 import com.dsr.linker.dto.RelationshipDto;
 import com.dsr.linker.security.JwtUser;
 import com.dsr.linker.service.RelationshipService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;

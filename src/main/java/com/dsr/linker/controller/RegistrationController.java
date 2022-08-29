@@ -1,6 +1,6 @@
 package com.dsr.linker.controller;
 
-import com.dsr.linker.dto.AccountDto;
+import com.dsr.linker.dto.account.AccountDto;
 import com.dsr.linker.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

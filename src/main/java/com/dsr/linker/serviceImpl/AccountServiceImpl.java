@@ -1,6 +1,10 @@
 package com.dsr.linker.serviceImpl;
 
 import com.dsr.linker.dto.*;
+import com.dsr.linker.dto.account.AccountDto;
+import com.dsr.linker.dto.account.AccountForSearchDto;
+import com.dsr.linker.dto.account.AccountForUserDto;
+import com.dsr.linker.dto.account.AccountItemDto;
 import com.dsr.linker.entity.Account;
 import com.dsr.linker.entity.AccountStatus;
 import com.dsr.linker.entity.City;
@@ -104,9 +108,9 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
         City city = null;
         Account account;
 
-        Optional<Account> acc = accountRepository.findByEmail(email);
+        Optional<Account> acc = accountRepository.findById(accountDto.getId());
         if(acc.isEmpty())
-            throw new ResourceNotFoundException(String.format("User with email %s does not exist", email));
+            throw new ResourceNotFoundException(String.format("User with id %d does not exist", accountDto.getId()));
         else
             account = acc.get();
 
@@ -173,6 +177,11 @@ public class AccountServiceImpl implements AccountService, UserDetailsService{
         List<Role> roles = new ArrayList<>();
         roles.add(account.getRole());
         return roles;
+    }
+
+    @Override
+    public Long getIdByEmail(String email) {
+        return accountRepository.getIdByEmail(email);
     }
 
     @Override

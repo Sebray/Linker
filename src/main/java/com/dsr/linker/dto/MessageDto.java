@@ -1,5 +1,6 @@
 package com.dsr.linker.dto;
 
+import com.dsr.linker.dto.account.AccountForChatDto;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,18 +20,18 @@ public class MessageDto {
     private String text;
 
     @JsonProperty(value = "sendingDate")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy/MM/dd hh:mm:ss")
     private Date sendingDate;
 
-    @JsonProperty(value = "senderId")
-    private Long sender;
+    @JsonProperty(value = "sender")
+    private AccountForChatDto sender;
 
-    @JsonProperty(value = "receiverId")
-    private Long receiver;
+    @JsonProperty(value = "receiver")
+    private AccountForChatDto receiver;
 
     @JsonProperty(value = "messageStatusId")
     private Long messageStatus;
 
-    @JsonProperty(value = "repliedMessageId")
-    private Long repliedMessage;
+    @JsonProperty(value = "repliedMessage")
+    private RepliedMessageDto repliedMessage;
 }

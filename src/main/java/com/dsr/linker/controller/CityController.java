@@ -1,0 +1,25 @@
+package com.dsr.linker.controller;
+
+import com.dsr.linker.dto.CityDto;
+import com.dsr.linker.service.CityService;
+import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("api/cities")
+@AllArgsConstructor
+public class CityController {
+    private final CityService cityService;
+
+    @GetMapping
+    public ResponseEntity<List<CityDto>> getCities(Long countryId){
+        return new ResponseEntity<>(cityService.getCitiesByCountryId(countryId), HttpStatus.OK);
+    }
+}
